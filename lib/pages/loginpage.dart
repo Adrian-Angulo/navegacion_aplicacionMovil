@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:proyecto_de_navegacion/Common/my_routers.dart';
 
@@ -9,6 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  String usuario = "Adrian";
+  String contrasena = "123";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,6 +59,9 @@ class _LoginPageState extends State<LoginPage> {
                     border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10.0),
                         borderSide: BorderSide.none)),
+                onChanged: (value) {
+                  usuario = value;
+                },
               ),
               const Padding(padding: EdgeInsets.all(10)),
               const Text(
@@ -75,12 +83,37 @@ class _LoginPageState extends State<LoginPage> {
                       borderRadius: BorderRadius.circular(10.0),
                       borderSide: BorderSide.none),
                 ),
+                onChanged: (value) {
+                  contrasena = value;
+                },
               ),
               const Padding(padding: EdgeInsets.all(20.0)),
               SizedBox(
                 width: 200,
                 child: ElevatedButton(
-                  onPressed: () => {Navigator.pushNamed(context, routeHome)},
+                  onPressed: () => {
+                    if (usuario == 'admin' && contrasena == '1234')
+                      {Navigator.pushNamed(context, routeHome)}
+                    else
+                      {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return AlertDialog(
+                                title: const Text('Error'),
+                                content:
+                                    const Text('Usuario y/o contraseña incorrectos'),
+                                actions: [
+                                  TextButton(
+                                      onPressed: () {
+                                        Navigator.of(context).pop();
+                                      },
+                                      child: const Text('Cerrar'))
+                                ],
+                              );
+                            })
+                      }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: const Color.fromRGBO(0, 250, 223, 100),
                     textStyle: const TextStyle(
