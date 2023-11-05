@@ -11,50 +11,92 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // usuario
-            Padding(
-              padding: EdgeInsets.symmetric(
-                horizontal: size.width * 0.1,
-                vertical: size.width * 0.1,
+      backgroundColor: const Color.fromRGBO(2, 56, 89, 100),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 90.0),
+        children: <Widget>[
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 100.0,
+                backgroundColor: Colors.blue[200],
+                backgroundImage: const AssetImage('images/retratoMujer.jpg'),
               ),
-              child: TextField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    labelText: 'email',
-                    labelStyle: TextStyle(
-                      color: Color(0xFFBEBCBC),
-                      fontWeight: FontWeight.w700,
-                    )),
-                onChanged: (value) {},
+              const Text(
+                'Iniciar Seccion',
+                style: TextStyle(
+                    fontFamily: 'cursive',
+                    fontSize: 50.0,
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold),
               ),
-            ),
-
-            // contraseña
-            Padding(
-              padding: EdgeInsets.only(
-                  left: size.width * 0.1, right: size.width * 0.1),
-              child: TextField(
-                keyboardType: TextInputType.emailAddress,
-                decoration: const InputDecoration(
-                    labelText: 'contraseña',
-                    labelStyle: TextStyle(
-                      color: Color(0xFFBEBCBC),
-                      fontWeight: FontWeight.w700,
-                    )),
-                onChanged: (value) {},
+            ],
+          ),
+          Column(
+            children: [
+              const Text(
+                'Usuario',
+                textAlign: TextAlign.left,
               ),
-            ),
-            ElevatedButton(
-                onPressed: () => {Navigator.pushNamed(context, routeHome)},
-                child: const Text('Iniciar Seccion'))
-          ],
-        ),
+              TextField(
+                enableInteractiveSelection: true,
+                autofocus: true,
+                textCapitalization: TextCapitalization.characters,
+                decoration: InputDecoration(
+                    fillColor: const Color.fromRGBO(0, 250, 223, 100),
+                    filled: true,
+                    hintText: 'Nombre del usuario',
+                    hintStyle: const TextStyle(color: Colors.white),
+                    suffixIcon: const Icon(Icons.verified_user),
+                    suffixIconColor: Colors.white,
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                        borderSide: BorderSide.none)),
+              ),
+              const Padding(padding: EdgeInsets.all(10)),
+              const Text(
+                'Contraseña',
+                textAlign: TextAlign.left,
+              ),
+              TextField(
+                enableInteractiveSelection: true,
+                obscureText: true,
+                textCapitalization: TextCapitalization.characters,
+                decoration: InputDecoration(
+                  fillColor: const Color.fromRGBO(0, 250, 223, 100),
+                  filled: true,
+                  hintText: 'Contraseña',
+                  hintStyle: const TextStyle(color: Colors.white),
+                  suffixIcon: const Icon(Icons.lock_outline),
+                  suffixIconColor: Colors.white,
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                      borderSide: BorderSide.none),
+                ),
+              ),
+              const Padding(padding: EdgeInsets.all(20.0)),
+              SizedBox(
+                width: 200,
+                child: ElevatedButton(
+                  onPressed: () => {Navigator.pushNamed(context, routeHome)},
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(0, 250, 223, 100),
+                    textStyle: const TextStyle(
+                        fontSize: 18, fontWeight: FontWeight.bold),
+                    padding: const EdgeInsets.all(20),
+                  ),
+                  child: const Center(
+                    child: Text('Iniciar Seccion',
+                        style: TextStyle(
+                            color: Color.fromARGB(255, 245, 243, 237))),
+                  ),
+                ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
