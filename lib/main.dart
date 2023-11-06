@@ -37,32 +37,56 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: const Text('Navegacion entre paginas'),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.5,
-              child: const Text('Esto es prueba'),
-            ),
-            const Text(
-              'Texto 01',
-              textAlign: TextAlign.center,
-            ),
-            const Text(
-              'Texto 03',
-              textAlign: TextAlign.left,
-            ),
-            ElevatedButton(
-              child: const Text('Ir a PlayList'),
-              onPressed: () => {Navigator.pushNamed(context, routePlayList)},
+      backgroundColor: const Color.fromRGBO(0, 250, 233, 100),
+      body: DefaultTextStyle(
+        style: const TextStyle(
+          fontSize: 18,
+        ),
+        child: ListView(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0, vertical: 90.0),
+          children: const <Widget>[
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image(image: AssetImage("images/hip-hop.png")),
+                Padding(
+                  padding: EdgeInsets.all(15.0),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Integrantes',
+                        style: TextStyle(
+                            fontSize: 40,
+                            fontFamily: 'Arial',
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromRGBO(253, 252, 252, 1)),
+                      ),
+                      Padding(padding: EdgeInsets.all(20)),
+                      Column(
+                        children: [
+                          Text('Adrian Camilo'),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: Text('Janier Acosta'),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
             )
           ],
         ),
+      ),
+      floatingActionButton: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          FloatingActionButton(
+            onPressed: () => {Navigator.pushNamed(context, routePlayList)},
+            child: const Icon(Icons.arrow_forward_ios_rounded),
+          )
+        ],
       ),
     );
   }

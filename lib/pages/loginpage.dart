@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:proyecto_de_navegacion/Common/my_routers.dart';
 
@@ -101,8 +99,8 @@ class _LoginPageState extends State<LoginPage> {
                             builder: (BuildContext context) {
                               return AlertDialog(
                                 title: const Text('Error'),
-                                content:
-                                    const Text('Usuario y/o contraseña incorrectos'),
+                                content: const Text(
+                                    'Usuario y/o contraseña incorrectos'),
                                 actions: [
                                   TextButton(
                                       onPressed: () {
