@@ -20,7 +20,7 @@ class MyRouters {
       case "/play_list":
         return MaterialPageRoute(builder: (_) => const PlayListPage());
       case "/now_play":
-        return MaterialPageRoute(builder: (_) => const NowPlayPage());
+        return MaterialPageRoute(builder: (_) => const NowPlayPage(title: '', description: '', songDescription: '',));
       default:
         return MaterialPageRoute(builder: (_) => const LoginPage());
     }
